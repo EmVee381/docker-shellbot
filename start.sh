@@ -6,7 +6,7 @@ CMD=$1
 HABIT_LOG=~/.habitctl/log
 
 cd /shell-bot
-supervisor start server.js
+supervisor start server.js &
 
 msg()
 {
