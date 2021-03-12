@@ -7,5 +7,5 @@ docker run  -d --rm --name shellbot -ti \
             -v /var/run/docker.sock:/var/run/docker.sock \
             -v ~/Documents/hledger:/root/hledger \
             -v (pwd)/config.json:/shell-bot/config.json \
-            -e SHELL=/bin/zsh EmVee381/docker-shellbot
+            -e SHELL=/bin/zsh emvee381/docker-shellbot
 
