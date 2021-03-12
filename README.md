@@ -6,4 +6,5 @@ docker run  -d --rm --name shellbot -ti \
             -v ~/.habitctl/:/root/.habitctl/  \
             -v /var/run/docker.sock:/var/run/docker.sock \
             -v ~/Documents/hledger:/root/hledger \
-            -e SHELL=/bin/zsh shellbot
+            -e SHELL=/bin/zsh EmVee381/docker-shellbot
+
