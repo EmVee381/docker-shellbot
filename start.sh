@@ -1,12 +1,13 @@
 #!/bin/sh
-
-TOKEN=1601278663:AAG-lcnCx4VmNCm8BQSlDjx0qgpR3aEQh-A
-CHATID=1033474701
-CMD=$1
+SCRIPTS_DIR=~/scripts.d
+TOKEN=$1
+CHATID=$2
 HABIT_LOG=~/.habitctl/log
+echo "{\"authToken\":\"$1\", \"owner\":$2}" >config.json
 
 cd /app/shell-bot
 pm2 start server.js 
+
 
 msg()
 {
@@ -17,22 +18,19 @@ lastmod(){
     echo $((( $(date +%s) - $(stat -c %X  "$1"))))
 
 }
-check_habitctl()
-{
-    echo -n "habitctl check..."
-atime=$(lastmod $HABIT_LOG)
-if [ $atime -gt 3600 ]
-then
- msg "habitctl todo"
- touch $HABIT_LOG
-fi
-echo "done"
 
-}
-
-while :
+while sleep 5
 do
 
-check_habitctl
-sleep 60
+if [ -d $SCRIPTS_DIR ] 
+ then 
+    for f in $SCRIPTS_DIR/*.sh
+        do
+        
+        echo  "running $f ..." 
+        $f $TOKEN $CHATID
+        echo "done"
+        done
+ fi
+
 done
