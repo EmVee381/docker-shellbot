@@ -20,6 +20,7 @@ ENV LANG=en_US.UTF-8 \
     LC_ALL=en_US.UTF-8
 RUN ln -fs /usr/share/zoneinfo/Europe/Prague /etc/localtime
 WORKDIR /app
+RUN npm install -g npm
 RUN npm install -g pm2
 RUN chown 1000:1000 /app
 RUN git clone https://github.com/wakatara/harsh
